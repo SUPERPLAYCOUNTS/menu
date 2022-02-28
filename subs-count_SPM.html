@@ -328,7 +328,7 @@
     }
 
     async function getYTStats() {
-        let request = await fetch('https://api.mgcounts.com/youtube/est/' + ID + '', { mode: "cors" })
+        let request = await fetch('https://backend.mgcounts.com/youtube/est/' + ID + '', { mode: "cors" })
         let data = await request.json().catch(() => { })
         if (!data) return;
         odometer.innerHTML = Math.floor(data.counts[0].count)
@@ -419,7 +419,7 @@
         var search = document.getElementById('search').value
         s()
         async function s() {
-        let request = await fetch('https://api.mgcounts.com/youtube/channel/search/' + search + '', { mode: "cors" })
+        let request = await fetch('https://backend.mgcounts.com/youtube/channel/search/' + search + '', { mode: "cors" })
         let data = await request.json().catch(() => { })
         if (!data) return;
 document.getElementById('name1').title = data.items[0].id.channelId
@@ -449,6 +449,6 @@ document.getElementById('name3').innerHTML = data.items[2].snippet.title
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.5/socket.io.js"></script>
 <script>
-var socket = io('https://api.mgcounts.com', { transports : ['websocket'] });
+var socket = io('https://backend.mgcounts.com', { transports : ['websocket'] });
 </script>
 </html>
